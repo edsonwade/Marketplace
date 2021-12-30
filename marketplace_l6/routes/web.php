@@ -20,13 +20,44 @@ Route::get('/', function () {
 //EXAMPLE WORKING WITH ELOQUENT
 Route::get('/model', function () {
 
-    //$data = User::all(); // all()-> return a collection of objects // select * from users;
-    //$data = DB::table('users')->find(1);// retorna the element passing the id //select * from users where id =1 limit 1;
-    //$data = DB::table('users')->where('id', '>', '2')->get();// retorna todos os campos na os ids são maiores que 2; select * from user where id > 2;
-    $data = DB::table('users')->whereBetween('id', ['10', '67'])->get();// retorna todos os campos que então no intervalo entre 10 e 67 ;
-    $data = DB::table('users')->orderBy('name','ASC')->paginate(10);//http://127.0.0.1:8000/model?page=36   paginas dados com laravel
+    // $data = DB::table('users')->whereBetween('id', ['10', '67'])->get();// retorna todos os campos que então no intervalo entre 10 e 67 ;
+    // $data = DB::table('users')->orderBy('name', 'ASC')->paginate(10);//http://127.0.0.1:8000/model?page=36   paginas dados com laravel
+
+    //Mass Assigment -> Atribuição em Massa create([]) salva automaticamente , precisa que o model tenha o metodo fillable
+
+
+ /*   $data[''] = User::create([
+        'name' => 'pedro augusto',
+        'email' => 'pedroaugusto@example.br',
+        'password' => bcrypt('12345')
+    ]);
+    if (!$data) {
+        $data['status'] = '200';
+        $data['msg'] = 'user created with success!!.';
+
+    } else {
+        $data['status'] = '404';
+        $data['msg'] = 'cannot created user..';
+    }*/
+
+    //Mass update -> return true or false
+
+    $data['data'] = User::find(100)->update([
+        'name' => 'carol',
+        'email' => 'carol@example.br',
+        'password' => bcrypt('1234534')
+    ]);
+    if ($data) {
+        $data['status'] = '200';
+        $data['msg'] = 'user updated with success!!.';
+
+    } else {
+        $data['status'] = '404';
+        $data['msg'] = 'cannot update user..';
+    }
 
     return response()->json($data);
+
 
 });
 
