@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
     protected $table = 'stores';
-    protected $fillable = ['name','slug','phone','description'];
+    protected $fillable = ['name', 'slug', 'phone', 'description'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
