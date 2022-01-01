@@ -14,10 +14,8 @@
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
-use App\Http\Controllers\Admin\StoreController;
 use App\User;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -131,10 +129,6 @@ Route::get('/model', function () {
     $dados = $products->categories()->sync([1, 2]); //add
     $dados = $products->categories()->sync([1]); //remove
     dd($dados);
-});
-
-Route::prefix('Admin')->group(function () {
-    Route::get('/index', 'Admin\\StoreController@index')->name('Admin.index');
 });
 
 
