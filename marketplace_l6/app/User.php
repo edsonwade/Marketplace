@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     /**
      * represent tha user has one store
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     *
      *
      */
 

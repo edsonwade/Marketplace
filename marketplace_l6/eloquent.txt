@@ -48,3 +48,19 @@ Inserção e atualização em massa.
 
     return response()->json($data);
 
+Relation Eloquent-> methods
+
+1:1 -> hasOne ,and belongsTo
+1:N -> hasOne , to belongsToMany ,
+N:N -> hasMany ,and belongsToMany
+
+
+ $table->bigIncrements('id');
+            $table->unsignedBigInteger('store_id');
+            $table->string('nome');
+            $table->string('slug');
+            $table->string('description');
+            $table->text('body');
+            $table->double('price', 10, 2);
+
+            ['nome','slug','description','body','price'];
