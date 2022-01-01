@@ -42,7 +42,7 @@ Route::get('/model', function () {
 
     //Mass update -> return true or false
 
-    $data['data'] = User::find(100)->update([
+    $data['data'] = User::find(40)->update([
         'name' => 'carol',
         'email' => 'carol@example.br',
         'password' => bcrypt('1234534')
