@@ -18,4 +18,13 @@ class Product extends Model
 
         return $this->belongsTo(Store::class);
     }
+
+    /**
+     * product belongs to many categories'
+     * produto pertence a muitas categorias ->pt
+     */
+    function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

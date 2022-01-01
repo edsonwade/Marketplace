@@ -74,3 +74,7 @@ N:N -> hasMany ,and belongsToMany
 create new table by cmd
 php artisan make:migration create_category_product_table --create=category_product
 Created Migration: 2022_01_01_170127_create_category_product_table
+
+
+Mapeando N:N  products_categories
+
