@@ -64,3 +64,13 @@ N:N -> hasMany ,and belongsToMany
             $table->double('price', 10, 2);
 
             ['nome','slug','description','body','price'];
+
+
+            [Relation eloquent
+            N:One-> methods( hasMany ,and belongsTo) (product, store)
+            store hasMay Products (StoreModel), and product
+            belongsTo store (ProductModel)]
+
+create new table by cmd
+php artisan make:migration create_category_product_table --create=category_product
+Created Migration: 2022_01_01_170127_create_category_product_table
