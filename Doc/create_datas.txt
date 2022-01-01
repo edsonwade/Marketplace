@@ -1,0 +1,56 @@
+ /**
+     * 1- criar uma loja para um usuário
+     * 2- criar um produto para uma loja
+     * 3-criar uma  categoria
+     *4- adicionar produtos para uma categoria ou vice-versa .
+     attach pega o id e adiciona na base de dados
+     */
+
+    /*1- criar uma loja para um usuário
+    $user = User::find(10);
+
+    $store = $user->store()->create([
+        'name' => 'Loja Teste',
+        'slug' => 'loja-teste',
+        'phone' => '000 000 000',
+        'description' => 'loja-teste de produtos',
+    ]);
+    dd($store);*/
+
+    //2- criar um produto para uma loja
+    $user = Store::find(40);
+
+    $products = $user->products()->create([
+        'nome' => 'Notebook Dell',
+        'slug' => 'loja-produtos',
+        'description' => 'CORE I6 123TB',
+        'body' => 'anything here is enough...',
+        'price' => 1023, 99,
+    ]);
+    //return response()->json($products);
+
+    // -> criar uma categoria
+
+    /* $categoria = Category::create([
+        'name' => 'Devices',
+        'slug' => 'Devices mad  by Wayne Corporation',
+        'description' => 'Computers',
+    ]);
+
+     $categoria1 = Category::create([
+        'name' => 'Games',
+        'slug' => 'games',
+        'description' => 'football manager 2022',
+    ]);
+    return response()->json([$categoria,$categoria1]);
+
+*/// 4-> adicionar produtos para uma categoria ou vice-versa .attach pega o id e adiciona na base de dados
+    //attach()->retorna null quando o valor é adicionado
+    //detach()->apaga o valor adicionado e retorna a quqntidade de items removido 1
+    //sync([])->retorna full information-> remove e addiciona elementos . id de linhas que existem na base de dados
+    $products = Product::find(44);
+    //$dados = $products->categories()->attach([1]);
+    //$dados = $products->categories()->detach([1]);
+    $dados = $products->categories()->sync([1, 2]); //add
+    $dados = $products->categories()->sync([1]); //remove
+    dd($dados);
