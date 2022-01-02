@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12">
                 <div class="card p-2">
                     <h3 align="center">Products</h3>
                     <div class="table-responsive">
@@ -30,7 +30,7 @@
                                     <td>{{$product->slug}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>{{$product->body}}</td>
-                                    <td>{{$product->price}}</td>
+                                    <td>&euro; {{$product->price}}</td>
                                     <td>
 
                                         <a class="btn btn-sm btn-outline-success
@@ -38,6 +38,17 @@
                                             Edit Store
                                         </a>
                                     </td>
+                                    <td>
+                                        <form
+                                            action="{{route('product.destroy',['product'=>$product->id])}}"
+                                            method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input class="btn btn-sm  btn-outline-danger" type="submit" value="delete">
+                                        </form>
+
+                                    </td>
+
 
                                     </tbody>
 

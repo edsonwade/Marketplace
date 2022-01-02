@@ -71,12 +71,12 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param int $product
+     *
      */
-    public function show($id)
+    public function show($product)
     {
-        //
+        return $product;
     }
 
     /**
@@ -125,10 +125,12 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $product
-     * @return \Illuminate\Http\Response
+     *
      */
     public function destroy($product)
     {
-        //
+        $product = $this->product->findOrFail($product);
+        $product->delete();
+        return redirect()->route('product.index')->with('message', 'product deleted with success!!!!');
     }
 }
