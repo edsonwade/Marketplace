@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Store;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -42,11 +43,29 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+
+            [
+                'nome' => 'required|string|min:5',
+                'slug' => 'required|string|min:10',
+                'description' => 'required|string|min:10',
+                'body' => 'required|string|min:10',
+                'price' => 'required|',
+            ]);
+        $store = Store::findOrFail(20);
+        $product = $store->products()->create([
+            'nome' => $request->input('nome'),
+            'slug' => $request->input('slug'),
+            'description' => $request->input('description'),
+            'body' => $request->input('body'),
+            'price' => $request->input('price'),
+
+        ]);
+        return redirect()->route('product.index')->with('message', 'new store created with success!!');
     }
 
     /**
@@ -81,7 +100,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, $product)
     {
-        //
+        $request->validate(
+
+            [
+                'nome' => 'required|string|min:5',
+                'slug' => 'required|string|min:10',
+                'description' => 'required|string|min:10',
+                'body' => 'required|string|min:10',
+                'price' => 'required|',
+            ]);
+        $product = $this->product->findOrFail($product);
+        $product->update([
+            'nome' => $request->input('nome'),
+            'slug' => $request->input('slug'),
+            'description' => $request->input('description'),
+            'body' => $request->input('body'),
+            'price' => $request->input('price'),
+
+        ]);
+        return redirect()->route('product.index')->with('message', 'product updated with success!!!!');
     }
 
     /**
