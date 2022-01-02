@@ -10,13 +10,13 @@
                         <form action="{{route('product.store')}}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Name Store</label>
+                                <label for="name">Name Product</label>
                                 <input type="text" class="form-control {{$errors->has('name') ? 'border-danger': ''}}"
                                        id="name" name="name" value="{{old('name')}}">
                                 <small class="form-text text-danger">{{$errors->first('name')}}</small>
                             </div>
                             <div class="form-group">
-                                <label for="user">User</label>
+                                <label for="user">Store</label>
                                 <select class="form-control {{$errors->has('user') ? 'border-danger': ''}}"
                                         id="user" name="user" value="{{old('user')}}">
                                     @foreach($stores as $store)
@@ -40,13 +40,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="body">Body</label>
-                                <input type="body" class="form-control {{$errors->has('body') ? 'border-danger': ''}}"
-                                       id="body" name="body" value="{{old('body')}}">
+                                <textarea type="body"
+                                          class="form-control {{$errors->has('body') ? 'border-danger': ''}}"
+                                          id="body" name="body" value="{{old('body')}}"></textarea>
                                 <small class="form-text text-danger">{{$errors->first('body')}}</small>
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="price" class="form-control {{$errors->has('price') ? 'border-danger': ''}}"
+                                <input type="number" step="0.01" class="form-control {{$errors->has('price') ? 'border-danger': ''}}"
                                        id="price" name="price" value="{{old('price')}}">
                                 <small class="form-text text-danger">{{$errors->first('price')}}</small>
                             </div>

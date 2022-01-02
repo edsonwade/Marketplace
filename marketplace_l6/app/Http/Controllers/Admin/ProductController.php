@@ -68,7 +68,7 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        $product = $this->product->find($product);
+        $product = $this->product->findOrFail($product);
         return view('admin.products.edit', compact('product'));
     }
 
