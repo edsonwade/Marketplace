@@ -140,6 +140,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/{store}/edit', 'StoreController@edit')->name('admin.edit');
     Route::put('/update/{store}', 'StoreController@update')->name('admin.update');
     Route::delete('/destroy/{store}', 'StoreController@destroy')->name('admin.destroy');
+
+    //Products route
+    Route::resource('product', 'ProductController');
 });
 
 
