@@ -137,6 +137,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/index', 'StoreController@index')->name('admin.index');
     Route::get('/create', 'StoreController@create')->name('admin.create');
     Route::post('/store', 'StoreController@store')->name('admin.store');
+    Route::get('/edit/{store}', 'StoreController@edit')->name('admin.edit');
+    Route::put('/update/{store}', 'StoreController@update')->name('admin.update');
+    Route::delete('/destroy/{store}', 'StoreController@destroy')->name('admin.delete');
 });
 
 

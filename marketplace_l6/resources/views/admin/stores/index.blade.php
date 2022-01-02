@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
 @extends('layouts.app')
 
+
 <script>
     $(document).ready(function () {
         table = $("#store").DataTable({
@@ -44,7 +45,7 @@
                 <div class="card p-2">
                     <h3 align="center">Store</h3>
                     <div class="table-responsive">
-                        <table id="store" class="table display" style="width:100%">
+                        <table id="store" class="table table-striped display" style="width:100%">
                             <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -53,6 +54,7 @@
                                 <th scope="col">Slug</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Description</th>
+
                             </tr>
                             </thead>
                             @foreach($stores as $store)
@@ -67,7 +69,11 @@
                                     <td>{{$store->description}}</td>
 
 
+
                                     </tbody>
+
+
+
 
                                 </tr>
                             @endforeach

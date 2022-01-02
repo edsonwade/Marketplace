@@ -52,4 +52,39 @@ class StoreController extends Controller
         return redirect()->route('admin.index')->with('message', 'new store created with success!!');
 
     }
+
+    function edit($store)
+    {
+        $store = Store::find($store);
+
+        return view('admin.stores.edit', compact('store'));
+    }
+
+    function update(Request $request, Store $store)
+    {
+        $request->validate(
+
+            [
+                'name' => 'required|string|min:5',
+                'slug' => 'required|string|min:10',
+                'phone' => 'required|min:9',
+                'description' => 'required'
+            ]);
+        $user = User::find(20);
+        $store = $user->store()->update([
+            'name' => $request->input('name'),
+            'slug' => $request->input('slug'),
+            'phone' => $request->input('phone'),
+            'description' => $request->input('description'),
+        ]);
+
+        return redirect()->route('admin.index')->with('message', ' store updated with success!!');
+    }
+
+    function delete($store)
+    {
+        $store = Store::find($store);
+        $store->delete();
+        return redirect()->route('admin.index')->with('message', 'Store deleted Successfully');
+    }
 }
