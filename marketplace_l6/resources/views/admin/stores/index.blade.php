@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js">
+<link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
 @extends('layouts.app')
 
 <script>
@@ -18,7 +20,7 @@
                     data: "id",
                     render: function (data, type, row, meta) {
                         if (type === "display") {
-                            data = '<a href="{{route('Admin.index')}}?id=' + data + '">' + row.id + "</a>";
+                            data = '<a href="{{route('admin.index')}}?id=' + data + '">' + row.id + "</a>";
                         }
                         return data;
                     }
@@ -42,7 +44,7 @@
                 <div class="card p-2">
                     <h3 align="center">Store</h3>
                     <div class="table-responsive">
-                        <table id="store" class="table">
+                        <table id="store" class="table display" style="width:100%">
                             <thead>
                             <tr>
                                 <th scope="col">ID</th>
