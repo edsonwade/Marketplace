@@ -133,10 +133,10 @@ Route::get('/model', function () {
     dd($dados);
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/index', 'Admin\\StoreController@index')->name('admin.index');
-    Route::get('/create', 'Admin\\StoreController@create')->name('admin.create');
-    Route::post('/store', 'Admin\\StoreController@store')->name('admin.store');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    Route::get('/index', 'StoreController@index')->name('admin.index');
+    Route::get('/create', 'StoreController@create')->name('admin.create');
+    Route::post('/store', 'StoreController@store')->name('admin.store');
 });
 
 
