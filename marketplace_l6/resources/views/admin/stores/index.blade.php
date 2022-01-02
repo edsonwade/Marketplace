@@ -68,11 +68,26 @@
                                     <td>{{$store->phone}}</td>
                                     <td>{{$store->description}}</td>
 
+                                    <td>
+
+                                        <a class="btn btn-sm btn-outline-success
+" href="{{route('admin.edit',['store'=>$store->id])}}">
+                                            Edit Store
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form
+                                            action="{{route('admin.destroy',['store'=>$store->id])}}"
+                                            method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input class="btn btn-sm  btn-outline-danger" type="submit" value="delete">
+                                        </form>
+
+                                    </td>
 
 
                                     </tbody>
-
-
 
 
                                 </tr>
@@ -80,7 +95,10 @@
                         </table>
                         {{$stores->links()}}
 
-
+                        <div class="mt-4">
+                            <a href="{{route('admin.create')}}" class=" btn btn-success btn-lg"> <i
+                                    class="fas fa-plus-circle"></i> Create new Store </a>
+                        </div>
                     </div>
                 </div>
             </div>

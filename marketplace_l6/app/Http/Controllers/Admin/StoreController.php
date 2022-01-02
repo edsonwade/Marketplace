@@ -81,7 +81,7 @@ class StoreController extends Controller
         return redirect()->route('admin.index')->with('message', ' store updated with success!!');
     }
 
-    function delete($store)
+    function destroy($store)
     {
         $store = Store::find($store);
         $store->delete();
